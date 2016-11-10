@@ -1,0 +1,115 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+   <title>Highcharts 教程 | 菜鸟教程(runoob.com)</title>
+   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="http://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript">
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","/obtain",true);
+xmlhttp.send();
+}
+</script>
+</head>
+<body>
+
+<h2>AJAX</h2>
+<button type="button" onclick="loadXMLDoc()">请求数据</button>
+<div id="myDiv"></div>
+<div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<script language="JavaScript">
+	var title = {
+       text: '月平均气温'
+   };
+   var subtitle = {
+        text: 'Source: runoob.com'
+   };
+   var xAxis = {
+       categories: ['一月', '二月', '三月', '四月', '五月', '六月'
+              ,'七月', '八月', '九月', '十月', '十一月', '十二月','十2月','十2月','十2月','十2月']
+   };
+   var yAxis = {
+      title: {
+         text: 'Temperature (\xB0C)'
+      },
+      plotLines: [{
+         value: 0,
+         width: 1,
+         color: '#808080'
+      }]
+   };
+
+   var tooltip = {
+      valueSuffix: '\xB0C'
+   }
+
+   var legend = {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+   };
+
+   var series =  [
+      {
+         name: 'Tokyo',
+         data: [{{ list_info}}]
+      },
+      {
+         name: 'New York',
+         data: [{{ cpu }}]
+      },
+      {
+         name: 'Berlin',
+         data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6,
+            17.9, 14.3, 9.0, 3.9, 1.0,999]
+      },
+      {
+         name: 'London',
+         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0,
+            16.6, 14.2, 10.3, 6.6, 4.8]
+      }
+   ];
+
+   var json = {};
+
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+	window.onload = function() {
+
+
+
+	var t2 = window.setInterval('test(json)',5000);
+}
+	function test(json) {
+		var nowtime = new Date()
+		console.log(nowtime.getTime())
+		$('#container').highcharts(json);
+		console.log(nowtime.getTime())
+	}
+</script>
+
+</body>
+</html>
