@@ -5,4 +5,3 @@
 
 ![image](https://github.com/cp-m/Mocha-ITOM_Codeline/raw/master/gitimg/M1.png)
 ![image](https://github.com/cp-m/Mocha-ITOM_Codeline/raw/master/gitimg/M2.png)
-![image](https://github.com/cp-m/Mocha-ITOM_Codeline/raw/master/gitimg/M3.png)
